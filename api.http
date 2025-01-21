@@ -1,0 +1,28 @@
+### POST request to create a Customer
+POST https://lmx2xyimug.execute-api.us-east-2.amazonaws.com/Prod/customers
+Content-Type: application/json
+
+{
+  "id": "12345",
+  "fullName": "John Doe",
+  "dateOfBirth": "1980-01-01",
+  "isActive": true,
+  "addresses": [
+    {
+      "street": "123 Elm St",
+      "city": "Some City",
+      "state": "Some State",
+      "zipCode": "12345",
+      "country": "Some Country"
+    }
+  ],
+  "contacts": [
+    {
+      "email": "john.doe@example.com",
+      "phone": "+1234567890",
+      "isPrimary": true
+    }
+  ],
+  "createdAt": "2025-01-21T12:00:00Z",
+  "updatedAt": "2025-01-21T12:00:00Z"
+}

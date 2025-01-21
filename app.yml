@@ -1,0 +1,37 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'  # Adicionando a transformação SAM
+Description: Template CloudFormation para Lambda com Node.js 20.x, S3 e DynamoDB.
+
+Resources:
+  CustomersFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: build/src/index.handler
+      Runtime: nodejs20.x
+      CodeUri: s3://meu-bucket-sam-deploy/lambda/source.zip
+      Timeout: 10
+      Environment:
+        Variables:
+          TABLE_NAME: Customers
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - DynamoDBCrudPolicy:
+            TableName: Customers
+      Events:
+        ApiGateway:
+          Type: Api
+          Properties:
+            Path: /customers
+            Method: ANY
+
+  CustomersTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: Customers
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+      BillingMode: PAY_PER_REQUEST
