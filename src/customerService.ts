@@ -7,9 +7,8 @@ export class CustomerService {
   private readonly tableName = "Customers";
   private readonly docClient: DynamoDBDocumentClient;
 
-  constructor() {
-    const client = new DynamoDBClient({});
-    this.docClient = DynamoDBDocumentClient.from(client);
+  constructor(docClient: DynamoDBDocumentClient) {
+    this.docClient = docClient;
   }
 
   async createCustomer(customerData: Omit<Customer, "id">): Promise<Customer> {
@@ -40,7 +39,7 @@ export class CustomerService {
       })
     );
 
-    return result.Item as Customer | null;
+    return result.Item ? (result.Item as Customer) : null;
   }
 
   async listCustomers(): Promise<Customer[]> {

@@ -1,8 +1,14 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResult } from 'aws-lambda';
+import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
+import { DynamoDBDocumentClient } from "@aws-sdk/lib-dynamodb";
 import { CustomerService } from './customerService';
 import { Customer } from './customer';
 
-const customerService = new CustomerService();
+const dynamoDbClient = new DynamoDBClient({});
+const docClient = DynamoDBDocumentClient.from(dynamoDbClient);
+
+
+const customerService = new CustomerService(docClient);
 
 export const handler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResult> => {
   try {

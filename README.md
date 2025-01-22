@@ -36,3 +36,16 @@ aws lambda update-function-code \
 
 
   https://lmx2xyimug.execute-api.us-east-2.amazonaws.com/Prod
+
+
+
+  docker run -d -p 8000:8000 amazon/dynamodb-local
+
+testar conexão aws dynamodb list-tables --endpoint-url http://localhost:8000
+
+  aws dynamodb create-table \
+    --table-name Customers \
+    --attribute-definitions AttributeName=id,AttributeType=S \
+    --key-schema AttributeName=id,KeyType=HASH \
+    --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5 \
+    --endpoint-url http://localhost:8000
