@@ -43,7 +43,7 @@ No momento isso é importante pois essa configuração está sendo usada pelo cl
     │   ├── customer.ts
     │   ├── customerService.ts
     │   └── index.ts
-    └── test/
+    └── /
         ├── customer.test.ts
         └── customerService.test.ts
 ```
@@ -124,6 +124,10 @@ npm run test
 Isso irá executar o `jest` para rodar os testes localmente, conforme configurado no seu projeto.
 
 Certifique-se de que o DynamoDB esteja rodando localmente antes de executar os testes, pois a função Lambda dependerá disso. Se necessário, ajuste a configuração do Jest para usar o DynamoDB local durante os testes.
+
+Cobertura de testes
+![image](https://github.com/user-attachments/assets/c815b5b1-594b-4913-aba8-ebcaacbda745)
+
 
 ## Função IAM
 
