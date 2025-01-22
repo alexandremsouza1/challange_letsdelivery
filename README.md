@@ -6,9 +6,11 @@ Este projeto implementa uma função Lambda usando Node.js 20 na AWS, com Dynamo
 
 - [Pré-requisitos](#pré-requisitos)
 - [Estrutura do Projeto](#estrutura-do-projeto)
+- [Build](#instruções-de-build)
 - [Passos para Implantação](#passos-para-implantação)
 - [Ponto de Entrada da API](#ponto-de-entrada-da-api)
 - [Desenvolvimento Local](#desenvolvimento-local)
+- [Testes](#instruções-de-testes)
 - [Função IAM](#função-iam)
 - [Limpeza](#limpeza)
 - [Resolução de Problemas](#resolução-de-problemas)
@@ -46,6 +48,23 @@ No momento isso é importante pois essa configuração está sendo usada pelo cl
         ├── customer.test.ts
         └── customerService.test.ts
 ```
+
+## Instruções de Build
+
+### Build
+
+Para compilar o código TypeScript para JavaScript, execute o seguinte comando no terminal:
+
+```bash
+npm run build
+```
+
+Isso irá:
+1. Limpar a pasta `build` (usando `rimraf`).
+2. Compilar o código TypeScript para a pasta `build` (usando o `tsc`, o compilador TypeScript).
+
+**IMPORTANTE** Após o build, você pode empacotar o conteúdo da pasta `build` e `node_modules` para enviar ao S3 
+
 
 ## Passos para Implantação
 
@@ -91,6 +110,20 @@ aws dynamodb list-tables --endpoint-url http://localhost:8000
 ```bash
 aws dynamodb create-table --table-name Customers --attribute-definitions AttributeName=id,AttributeType=S --key-schema AttributeName=id,KeyType=HASH --provisioned-throughput ReadCapacityUnits=5,WriteCapacityUnits=5 --endpoint-url http://localhost:8000
 ```
+
+## Instruções de Build
+
+### Testes
+
+Para rodar os testes, você pode usar o comando:
+
+```bash
+npm run test
+```
+
+Isso irá executar o `jest` para rodar os testes localmente, conforme configurado no seu projeto.
+
+Certifique-se de que o DynamoDB esteja rodando localmente antes de executar os testes, pois a função Lambda dependerá disso. Se necessário, ajuste a configuração do Jest para usar o DynamoDB local durante os testes.
 
 ## Função IAM
 
