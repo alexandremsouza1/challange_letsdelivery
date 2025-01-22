@@ -125,7 +125,7 @@ Isso irá executar o `jest` para rodar os testes localmente, conforme configurad
 
 Certifique-se de que o DynamoDB esteja rodando localmente antes de executar os testes, pois a função Lambda dependerá disso. Se necessário, ajuste a configuração do Jest para usar o DynamoDB local durante os testes.
 
-Cobertura de testes
+### Cobertura de testes
 ![image](https://github.com/user-attachments/assets/c815b5b1-594b-4913-aba8-ebcaacbda745)
 
 
