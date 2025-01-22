@@ -27,6 +27,7 @@ Para que funcione corretamente é necessario criar o bucket s3 de forma manual. 
 No momento isso é importante pois essa configuração está sendo usada pelo cloudformation template.
 
 ## Estrutura do Projeto
+```bash
 └── alexandremsouza1-challange_letsdelivery/
     ├── README.md
     ├── api.http
@@ -44,7 +45,7 @@ No momento isso é importante pois essa configuração está sendo usada pelo cl
     └── test/
         ├── customer.test.ts
         └── customerService.test.ts
-
+```
 
 ## Passos para Implantação
 
