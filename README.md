@@ -34,7 +34,6 @@ No momento isso é importante pois essa configuração está sendo usada pelo cl
     ├── README.md
     ├── api.http
     ├── app.yml
-    ├── build.zip
     ├── jest-dynamodb-config.js
     ├── jest.config.js
     ├── jest.setup.js
@@ -68,7 +67,8 @@ Isso irá:
 
 ## Passos para Implantação
 
-Aqui voce deve rodar o build da aplicação e zipar o conteudo da pasta build junto com o node_modules.
+Aqui voce deve rodar o build da aplicação e zipar o conteudo da pasta build junto com o node_modules. 
+De o nome desse arquivo compactado de `build.zip`
 
 1. Empacote a função Lambda:
 
