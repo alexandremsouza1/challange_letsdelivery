@@ -10,8 +10,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.handler = void 0;
+const client_dynamodb_1 = require("@aws-sdk/client-dynamodb");
+const lib_dynamodb_1 = require("@aws-sdk/lib-dynamodb");
 const customerService_1 = require("./customerService");
-const customerService = new customerService_1.CustomerService();
+const dynamoDbClient = new client_dynamodb_1.DynamoDBClient({});
+const docClient = lib_dynamodb_1.DynamoDBDocumentClient.from(dynamoDbClient);
+const customerService = new customerService_1.CustomerService(docClient);
 const handler = (event) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     try {

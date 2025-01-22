@@ -10,14 +10,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CustomerService = void 0;
-const client_dynamodb_1 = require("@aws-sdk/client-dynamodb");
 const lib_dynamodb_1 = require("@aws-sdk/lib-dynamodb");
 const uuid_1 = require("uuid");
 class CustomerService {
-    constructor() {
+    constructor(docClient) {
         this.tableName = "Customers";
-        const client = new client_dynamodb_1.DynamoDBClient({});
-        this.docClient = lib_dynamodb_1.DynamoDBDocumentClient.from(client);
+        this.docClient = docClient;
     }
     createCustomer(customerData) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -37,7 +35,7 @@ class CustomerService {
                 TableName: this.tableName,
                 Key: { id },
             }));
-            return result.Item;
+            return result.Item ? result.Item : null;
         });
     }
     listCustomers() {
