@@ -1,5 +1,7 @@
 ### POST request to create a Customer
-POST https://lmx2xyimug.execute-api.us-east-2.amazonaws.com/Prod/customers
+
+
+POST https://neokrwg676.execute-api.us-east-2.amazonaws.com/Prod/customers
 Content-Type: application/json
 
 {
@@ -26,4 +28,39 @@ Content-Type: application/json
   "createdAt": "2025-01-22T09:30:00Z",
   "updatedAt": "2025-01-22T09:30:00Z"
 }
+
+
+### List one
+GET https://neokrwg676.execute-api.us-east-2.amazonaws.com/Prod/customers/67890
+
+### Update an existing customer
+PUT https://neokrwg676.execute-api.us-east-2.amazonaws.com/Prod/customers/67890
+Content-Type: application/json
+
+{
+  "fullName": "Jane Smith Updated",
+  "dateOfBirth": "1992-05-15",
+  "isActive": false,
+  "addresses": [
+    {
+      "street": "789 Pine Ave",
+      "city": "New City",
+      "state": "New State",
+      "zipCode": "98765",
+      "country": "New Country"
+    }
+  ],
+  "contacts": [
+    {
+      "email": "jane.smith.updated@example.com",
+      "phone": "+1098765432",
+      "isPrimary": true
+    }
+  ]
+}
+
+
+### Delete a customer by ID
+DELETE https://neokrwg676.execute-api.us-east-2.amazonaws.com/Prod/customers/67890
+
 

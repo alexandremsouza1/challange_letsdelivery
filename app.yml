@@ -18,11 +18,31 @@ Resources:
         - DynamoDBCrudPolicy:
             TableName: Customers
       Events:
-        ApiGateway:
+        CreateCustomerApi:
           Type: Api
           Properties:
             Path: /customers
-            Method: ANY
+            Method: POST  # Para criar novos clientes
+        GetAllCustomersApi:
+          Type: Api
+          Properties:
+            Path: /customers
+            Method: GET  # Para listar todos os clientes
+        GetCustomerByIdApi:
+          Type: Api
+          Properties:
+            Path: /customers/{id}
+            Method: GET  # Para buscar um cliente por ID
+        UpdateCustomerByIdApi:
+          Type: Api
+          Properties:
+            Path: /customers/{id}
+            Method: PUT  # Para atualizar um cliente por ID
+        DeleteCustomerByIdApi:
+          Type: Api
+          Properties:
+            Path: /customers/{id}
+            Method: DELETE 
 
   CustomersTable:
     Type: AWS::DynamoDB::Table

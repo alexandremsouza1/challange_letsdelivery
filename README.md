@@ -90,7 +90,7 @@ aws lambda update-function-code --function-name letsdelivery-stack-CustomersFunc
 ## Ponto de Entrada da API
 A API pode ser acessada em:
 
-https://lmx2xyimug.execute-api.us-east-2.amazonaws.com/Prod
+https://neokrwg676.execute-api.us-east-2.amazonaws.com/Prod
 
 
 ## Desenvolvimento Local
